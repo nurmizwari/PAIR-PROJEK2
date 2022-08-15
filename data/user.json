@@ -1,0 +1,10 @@
+[
+    {
+      
+      "DepartmentId": 1,
+      "password": "password",
+      "email":"admin123@gmail.com",
+      "role":"admin"
+      
+    }
+  ]
