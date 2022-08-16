@@ -10,72 +10,48 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <title>Register</title>
+  <title>Edit Employee</title>
 </head>
 
 <body>
-  <%=  JSON.stringify(result)  %> 
+ 
+  <%= JSON.stringify(result)  %> 
   
   <div class="container">
-      <%- include('partials/navbar.ejs') %>
+      <%- include('../partials/navbar.ejs') %>
       <!--  -->
       <div style="margin-top: 20px; font-weight:bolder; text-align: center;" class="mb-3 col-sm-8 alert alert-primary" role="alert">
-        Register
+        Edit Employee
       </div>
    
-      <form style="font-weight:bold ; align-items: center;" action="/register" method="post">
-
-        <div class="mb-3 col-sm-8">
-          <label for="email" class="form-label">Email</label>
-          <input type="text" class="form-control" name="email">
-        </div>
-        <div class="mb-3 col-sm-8">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" name="password">
-        </div>
-        <div class="mb-3 col-sm-8">
-          <label for="role" class="form-label">Role</label>
-          <select class="form-select" name="role">
-            <option selected disabled>-- Select --</option>
-            <option value="Admin">Admin</option>
-            <option value="Employee">Employee</option>
-          </select>
-
-        </div>
-        <div class="mb-3 col-sm-8">
-          <label for="role" class="form-label">Department</label>
-          <select class="form-select" name="DepartmentId">
-            <option selected disabled>-- Select --</option>
-           
-              <option value="1"> Production </option>
-            </select>
-   
-
-        </div>
-
+      <form style="font-weight:bold ; align-items: center;" action='/employee/<%= result.id  %> /edit' method="post">
         <div class="mb-3 col-sm-8">
           <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" name="name">
+          <input type="text" class="form-control" name="name" value="<%= result.name  %> ">
         </div>
         <div class="mb-3 col-sm-8">
           <label  class="form-label">Gender</label>
           <select class="form-select" name="gender" >
-            <option value="" selected disabled>--Gender--</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+            <% let gender = ['Male','Female'] %>
+            <% gender.forEach((el) => { %>
+              <option value="<%= el %>" <%=  el === result.gender ? 'selected' : ""  %> > <%= el  %> </option>            
+            <% }) %> 
+            
           </select>
         </div>
         <div class="mb-3 col-sm-8">
           <label  class="form-label">Date of Birth</label>
-          <input type="date" class="form-control" name="dateOfBirth">
+          <input type="date" class="form-control" name="dateOfBirth" value="<%= result.formatCreatedDate  %> ">
         </div>
         <div class="mb-3 col-sm-8">
           <label  class="form-label">Status</label>
           <!-- <input type="text" class="form-control" name="status"> -->
           <select class="form-select" name="status" >
-            <option value="" selected disabled>--status--</option>
-            <option value="Permanent">Permanent</option>
-            <option value="Contract">Contract</option>
+            <% let status = ['Permanent','Contract'] %> 
+             <% status.forEach((el)=>{ %>
+               <option value="<%= el %>" <%= el === result.status ? "selected" : "" %> ><%= el  %> </option>
+
+           <%  }) %> 
           </select>
         </div>
 

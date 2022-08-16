@@ -38,7 +38,7 @@ class OvertimeController{
         let id = req.params.ProfileId
         User.findByPk(id,{include:"Overtimes"})
         .then((result) => {
-            console.log(result);
+            // console.log(result);
             res.render('./overtime/overtime',{result,formatCreatedDate})
             // res.send(result)
         }).catch((err) => {
@@ -46,6 +46,45 @@ class OvertimeController{
             res.send(err)
         });
     }
+
+    static edit(req, res){
+        // console.log(req.params);
+        let id = req.params.UserId
+        Overtime.findByPk(id)
+        .then((result) => {
+            // res.send(result)
+            res.render('./overtime/edit',{result})
+        }).catch((err) => {
+            
+        });
+    }
+
+    static saveEdit(req, res){
+
+        // console.log(req.params);
+        let id = req.params.UserId
+        // console.log(req.body);
+        let {date,description} = req.body
+
+        Overtime.update({date,description},{where:{id}})
+        .then(_ => {
+            res.redirect(`/overtime/${id}/view`)
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
+
+    static delete(req, res){
+        console.log(req.params);
+        let id = req.params.UserId
+        Overtime.destroy({where:{id}})
+        .then((result) => {
+            res.redirect(`/overtime/${id}/view`)
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
+
 }
 
 module.exports = OvertimeController

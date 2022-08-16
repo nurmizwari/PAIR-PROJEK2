@@ -20,7 +20,7 @@
     <div class="container">
         <%- include('./partials/navbar')  %> 
 
-        <%= JSON.stringify(result)  %> 
+        <!-- <%= JSON.stringify(result)  %>  -->
         <table class="table table-striped mt-3">
             <thead class="table-dark">
               <tr>
@@ -29,7 +29,7 @@
                 <th>Date Of Birth</th>
                 <th>Status</th>
                 <th>Department</th>
-                <th>Action</th>
+                <th style="display: flex; justify-content:space-around;" > Action</th>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@
                 <td><%= el.Profile.status %></td>
                 <td><%= el.Department.divisi%></td>
                 
-                <td class="col">
+                <td style="text-align: right;" class="col">
                   <a href='/overtime/<%= el.Profile.id  %>/add'>
                     <button type="button" class="btn btn-primary">Add Overtime</button>
                   </a>
@@ -52,6 +52,9 @@
                   <a href='/overtime/<%= el.Profile.id  %>/view'>
                     <button type="button" class="btn btn-primary">View Overtime</button>
                   </a>
+                  <a href='/employee/<%= el.Profile.id  %>/edit'>
+                    <button type="button" class="btn btn-primary">Edit Employee</button>
+                  </a>  
                 </td>
               
                 <% }) %>

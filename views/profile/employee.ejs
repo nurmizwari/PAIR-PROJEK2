@@ -18,46 +18,40 @@
   <body>
   
     <div class="container">
-       
         <%- include('../partials/navbar')  %> 
+
         <%= JSON.stringify(result)  %> 
-
-        
-
-      <% if (result.Overtimes.length === null || result.Overtimes.length === 0) { %>
-       <p style="font-weight:bold ;">No Overtimes</p>
-      <% } else { %>
         <table class="table table-striped mt-3">
-          <thead class="table-dark">
-            <tr>
-              
-              <th>Date</th>
-              <th>Description</th>
-              <th>Action</th>
-            
-            </tr>
-          </thead>
-          <tbody style="font-weight:bold ;">
-          
-
-              
-               <tr>
-                  <% result.Overtimes.forEach((ele)=>{ %>
-                      <td><%= ele.date  %> </td>
-                      <td><%= ele.description  %> </td> 
-                      <td><a href='/overtime/<%=ele.id  %>/view/edit'><button type="button" class="btn btn-primary">Edit</button></a> <a href='/overtime/<%=ele.id  %>/view/delete'><button type="button" class="btn btn-primary">Delete</button></a></td>               
+            <thead class="table-dark">
+              <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Date Of Birth</th>
+                <th>Status</th>
+                <th>Department</th>
+                <th  > Action</th>
               </tr>
-            <%      }) %> 
-            
-            
-        
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <% result.forEach((el)=>{ %>
+    
+              <tr style="font-weight:bold ;">
+                <td scope="row"><%= el.Profile.name %></td>
+                <td><%= el.Profile.gender %></td>
+                <td><%= el.Profile.formatCreatedDate %></td>
+                <td><%= el.Profile.status %></td>
+                <td> <%= el.Department.divisi  %> </td>
+                <td> <a href='/employee/<%=el.Profile.id %>/delete'><button type="button" class="btn btn-primary">Delete Employee</button></a></td>
+                
+                
+                
+              
+                <% }) %>
+              </tr>
+            </tbody>
+          </table>
 
-  </div>
-   <%   }%>
-
-     
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

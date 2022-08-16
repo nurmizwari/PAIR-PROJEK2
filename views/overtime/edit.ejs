@@ -17,57 +17,39 @@
   </head>
   <body>
 
+    <%= JSON.stringify(result)  %> 
   
     <div style="font-weight:bold ;" class="container">
         <%- include('../partials/navbar')  %>
 
         
 
-        <h3 style="text-align: left;">Add  Employee </h3>
+        <h3 style="text-align: left;">Edit  Overtime </h3>
 
     <div>
-    <form  action='/profile/add' method="post">
+    <form  action='/overtime/<%= result.id  %>/view/edit' method="post">
         <div class="mb-3 col-sm-8">
-          <label for="" class="form-label" name="name"
-            >Name</label
-          >
-          <input
-            type="text"
-            class="form-control"
-            name="name"
-            placeholder=""
-          />
-        </div>
-        <div class="mb-3 col-sm-8">
-          <label for="" class="form-label" name ="gender" 
-            >Gender</label
-          >
-          <select class="form-select" name="gender" id="">
-            <option value="" selected disabled>--choose--</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </div>
-        <div class="mb-3 col-sm-8">
-          <label for="" class="form-label" name ="dateOfBirth" 
-            >DateOfBirth</label
+          <label for="" class="form-label" name="date"
+            >Date</label
           >
           <input
             type="date"
             class="form-control"
-            name="dateOfBirth"
-            placeholder="" 
+            name="date"
+            placeholder=""
           />
         </div>
         <div class="mb-3 col-sm-8">
-          <label for="" class="form-label" name ="status" 
-            >Status</label
+          <label for="" class="form-label" name ="description" 
+            >Description</label
           >
-          <select class="form-select" name="status" id="">
-            <option value="" selected disabled>--choose--</option>
-            <option value="Permanent">Permanent</option>
-            <option value="Contrack">Contrack</option>
-          </select>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            placeholder="" 
+            value="<%= result.description  %> "
+          />
         </div>
         
         <div>
