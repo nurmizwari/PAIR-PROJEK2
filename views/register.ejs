@@ -14,59 +14,73 @@
 </head>
 
 <body>
-  <%- include('partials/navbar.ejs') %>
+  <%=  JSON.stringify(result)  %> 
+  
+  <div class="container">
+      <%- include('partials/navbar.ejs') %>
+      <!--  -->
+      <div style="margin-top: 20px; font-weight:bolder; text-align: center;" class="mb-3 col-sm-8 alert alert-primary" role="alert">
+        Register
+      </div>
+   
+      <form style="font-weight:bold ; align-items: center;" action="/register" method="post">
 
-    <div class="container">
-      <p style="color: red;">
-        <% if(errors){ %>
-          <% errors.split('%').map( e=>{%>
-            <%=e%> <br>
-              <% }) %>
-                <% } %>
-      </p>
-      <h1>Register</h1>
-      <form action="/register" method="post">
-        <div class="mb-3 sm-3">
-          <label for="userName" class="form-label">User Name</label>
-          <input type="text" class="form-control" name="userName">
-        </div>
-
-        <div class="mb-3 sm-3">
+        <div class="mb-3 col-sm-8">
           <label for="email" class="form-label">Email</label>
           <input type="text" class="form-control" name="email">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-sm-8">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" name="password">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-sm-8">
           <label for="role" class="form-label">Role</label>
-          <select name="role">
+          <select class="form-select" name="role">
             <option selected disabled>-- Select --</option>
-            <option value="admin">Admin</option>
-            <option value="user">User</option>
+            <option value="Admin">Admin</option>
+            <option value="Employee">Employee</option>
           </select>
 
         </div>
-        <div class="mb-3">
-          <label for="role" class="form-label">Nama Store</label>
-          <select name="StoreId">
+        <div class="mb-3 col-sm-8">
+          <label for="role" class="form-label">Department</label>
+          <select class="form-select" name="DepartmentId">
             <option selected disabled>-- Select --</option>
             <% result.forEach((el)=>{%>
+              <option value="<%= el.Department.id  %>"> <%= el.Department.divisi  %>  </option>
+            </select>
+            <% }) %>
 
-              <option value="<%= el.id %>">
-                <%= el.name %>
-              </option>
-              </option>
-              <% }) %>
+        </div>
+
+        <div class="mb-3 col-sm-8">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" name="name">
+        </div>
+        <div class="mb-3 col-sm-8">
+          <label  class="form-label">Gender</label>
+          <input type="text" class="form-control" name="gender">
+        </div>
+        <div class="mb-3 col-sm-8">
+          <label  class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" name="dateOfBirth">
+        </div>
+        <div class="mb-3 col-sm-8">
+          <label  class="form-label">Status</label>
+          <!-- <input type="text" class="form-control" name="status"> -->
+          <select class="form-select" name="status" >
+            <option value="" selected disabled>--status--</option>
+            <option value="Permanent">Permanent</option>
+            <option value="Contract">Contract</option>
           </select>
-
         </div>
 
 
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
+  
+
 
 
 

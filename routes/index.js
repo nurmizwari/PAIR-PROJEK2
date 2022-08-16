@@ -1,7 +1,12 @@
 const  ProfileController = require('../controller/profile')
 const OvertimeController  = require('../controller/overtime')
+const UserController  = require('../controller/user')
 
 const router = require('express').Router()
+
+
+router.get('/register',UserController.getRegister)
+router.post('/register',UserController.posRegister)
 
 router.get('/',ProfileController.home)
 
