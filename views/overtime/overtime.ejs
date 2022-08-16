@@ -21,32 +21,39 @@
        
         <%- include('../partials/navbar')  %> 
         <%= JSON.stringify(result)  %> 
+
+      <% if (result.Overtimes.length === 0) { %>
+       <p style="font-weight:bold ;">No Overtimes</p>
+      <% } else { %>
         <table class="table table-striped mt-3">
-            <thead class="table-dark">
-              <tr>
-                
-                <th>Date</th>
-                <th>Description</th>
+          <thead class="table-dark">
+            <tr>
               
-              </tr>
-            </thead>
-            <tbody style="font-weight:bold ;">
+              <th>Date</th>
+              <th>Description</th>
             
-
-                <% result.forEach((el)=>{ %>
-                 <tr>
-                    <% el.Overtimes.forEach((ele)=>{ %>
-                        <td><%= ele.date  %> </td>
-                        <td><%= ele.description  %> </td>                
-                </tr>
-              <%      }) %> 
-              
-              <%   }) %> 
+            </tr>
+          </thead>
+          <tbody style="font-weight:bold ;">
           
-            </tbody>
-          </table>
 
-    </div>
+              
+               <tr>
+                  <% result.Overtimes.forEach((ele)=>{ %>
+                      <td><%= ele.date  %> </td>
+                      <td><%= ele.description  %> </td>                
+              </tr>
+            <%      }) %> 
+            
+            
+        
+          </tbody>
+        </table>
+
+  </div>
+   <%   }%>
+
+     
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

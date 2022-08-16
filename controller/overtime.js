@@ -36,7 +36,7 @@ class OvertimeController{
 
         // console.log(req.params);{ ProfileId: '1' }
         let id = req.params.ProfileId
-        User.findAll({include:"Overtimes"})
+        User.findByPk(id,{include:"Overtimes"})
         .then((result) => {
             console.log(result);
             res.render('./overtime/overtime',{result,formatCreatedDate})

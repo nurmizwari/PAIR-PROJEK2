@@ -8,7 +8,9 @@ class ProfileController{
         //! INI HALAMAN HOME DATA
         User.findAll({include:[Profile, Department, Overtime]})
         .then((result) => {
-          res.render('./home',{result})
+            // console.log(result);
+            // res.send('masuk')
+          res.render('home',{result})
         // res.send(result)
         }).catch((err) => {
             // console.log(err);
@@ -21,12 +23,12 @@ class ProfileController{
         res.render('./profile/add')
     }
 
-    static saveProfile(req, res){
-        console.log(req.body);
+    // static saveProfile(req, res){
+    //     console.log(req.body);
 
-        let {name,gender,dateOfBirth,status} = req.body
-        // Profile.create({name,gender,dateOfBirth,status,UserId:})
-    }
+    //     let {name,gender,dateOfBirth,status} = req.body
+    //     // Profile.create({name,gender,dateOfBirth,status,UserId:})
+    // }
 }
 
 module.exports= ProfileController

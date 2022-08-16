@@ -17,6 +17,6 @@ router.post('/overtime/:ProfileId/add',OvertimeController.addOvertimePost)
 router.get('/overtime/:ProfileId/view',OvertimeController.view)
 
 router.get('/profile/add',ProfileController.addProfile)
-router.post('/profile/add',ProfileController.saveProfile)
+// router.post('/profile/add',ProfileController.saveProfile)
 
 module.exports = router
