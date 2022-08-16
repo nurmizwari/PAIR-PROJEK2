@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsTo(models.Department)
       User.hasMany(models.Overtime)
     }
+   
   }
   User.init({
     DepartmentId: DataTypes.INTEGER,

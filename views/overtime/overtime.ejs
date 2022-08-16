@@ -18,44 +18,31 @@
   <body>
   
     <div class="container">
-        <%- include('./partials/navbar')  %> 
-
+       
+        <%- include('../partials/navbar')  %> 
         <%= JSON.stringify(result)  %> 
         <table class="table table-striped mt-3">
             <thead class="table-dark">
               <tr>
-                <th>Name</th>
-                <th>Gender</th>
-                <th>Date Of Birth</th>
-                <th>Status</th>
-                <th>Department</th>
-                <th>Action</th>
+                
+                <th>Date</th>
+                <th>Description</th>
+              
               </tr>
             </thead>
-            <tbody>
-              <% result.forEach((el)=>{ %>
-    
-              <tr style="font-weight:bold ;">
-                <td scope="row"><%= el.Profile.name %></td>
-                <td><%= el.Profile.gender %></td>
-                <td><%= el.Profile.formatCreatedDate %></td>
-                <td><%= el.Profile.status %></td>
-                <td><%= el.Department.divisi%></td>
-                
-                <td class="col">
-                  <a href='/overtime/<%= el.Profile.id  %>/add'>
-                    <button type="button" class="btn btn-primary">Add Overtime</button>
-                  </a>
-                  <a href='/overtime/<%= el.Profile.id  %>/edit'>
-                    <button type="button" class="btn btn-primary">Edit Overtime</button>
-                  </a>
-                  <a href='/overtime/<%= el.Profile.id  %>/view'>
-                    <button type="button" class="btn btn-primary">View Overtime</button>
-                  </a>
-                </td>
+            <tbody style="font-weight:bold ;">
+            
+
+                <% result.forEach((el)=>{ %>
+                 <tr>
+                    <% el.Overtimes.forEach((ele)=>{ %>
+                        <td><%= ele.date  %> </td>
+                        <td><%= ele.description  %> </td>                
+                </tr>
+              <%      }) %> 
               
-                <% }) %>
-              </tr>
+              <%   }) %> 
+          
             </tbody>
           </table>
 
