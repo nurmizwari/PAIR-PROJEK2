@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgresql",
-    "database": "mizwarigroup",
+    "password": "123456",
+    "database": "mizwarigroupDB",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
