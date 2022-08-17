@@ -43,7 +43,7 @@
               
                <tr>
                   <% result.Overtimes.forEach((ele)=>{ %>
-                      <td><%= ele.date  %> </td>
+                      <td><%= ele.date.toISOString().split('T')[0]  %> </td>
                       <td><%= ele.description  %> </td> 
                       <% if (role === 'Admin') { %>
                        

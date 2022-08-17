@@ -22,12 +22,19 @@ module.exports = (sequelize, DataTypes) => {
     //   };
     //   return this.date.toLocaleDateString("id-ID", options);
     //   }
-    get formatDate(){
-      var date = this.date
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    return [date.getFullYear(), mnth, day].join("-");
-    }
+    formatDate(date) {
+      let d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+  
+      if (month.length < 2) 
+          month = '0' + month;
+      if (day.length < 2) 
+          day = '0' + day;
+  
+      return [year, month, day].join('-');
+  }
   }
   Overtime.init({
     date: DataTypes.DATE,
