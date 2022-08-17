@@ -9,6 +9,7 @@
 - session dan middleware sudah
 - hanya admin yang bisa delete dan update
 - employee cuman bisa lihat data saja
+- nodemailer sudah
 # BUG DAN ERROR
 
 - masih ada bug di date di bagian edit profile  (BELUM SOLVED)

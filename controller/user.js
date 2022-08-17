@@ -1,6 +1,7 @@
 
 const { Department,User,Profile,Overtime } = require("../models");
 const bcrypt = require('bcryptjs')
+const {nodeMail} = require('../helper/nodemailer')
 
 class UserController{
     
@@ -27,6 +28,7 @@ class UserController{
         .then((result)=>{
             // console.log(result,'result 2');
             // res.send(result)
+            nodeMail(email)
             res.redirect('/login')
 
         })

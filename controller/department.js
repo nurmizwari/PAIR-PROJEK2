@@ -1,19 +1,15 @@
 const { Department,User,Profile,Overtime } = require("../models");
 
 class DepartmentController{
-    // static home(req, res){
-    //     console.log('masuk');
-    //     // res.send('masuk')
-    //     Department.findAll({ include: User })
-    //     .then((result) => {
-    //         console.log(result);
-    //         res.send(result)
-    //     }).catch((err) => {
-    //         console.log(err);
-    //         res.send(err)
-    //     });
-    // }
-    
+   static department(req,res){
+        Department.department({where:{divisi:{limit:1}}})
+        .then((result) => {
+            // res.send(result)
+            res.render('department/department',{result})
+        }).catch((err) => {
+            res.send(err)
+        });
+   }
 }
 
 module.exports = DepartmentController

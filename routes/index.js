@@ -1,6 +1,7 @@
 const  ProfileController = require('../controller/profile')
 const OvertimeController  = require('../controller/overtime')
 const UserController  = require('../controller/user')
+const DepartmentController = require('../controller/department')
 
 const router = require('express').Router()
 
@@ -48,6 +49,9 @@ router.get('/overtime/:UserId/view/delete',OvertimeController.delete)
 // router.post('/overtime/:ProfileId/edit',OvertimeController.edit)
 router.get('/employee',ProfileController.profile)
 router.get('/employee/:ProfileId/delete',ProfileController.delete)
+
+router.get('/department',DepartmentController.department)
+
 router.get('/logout',UserController.logout)
 
 

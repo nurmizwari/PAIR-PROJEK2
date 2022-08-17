@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       // Department.belongsTo(models.)
       Department.hasMany(models.User)
     }
+    static department(){
+      return Department.findAll()
+    }
   }
   Department.init({
     divisi: DataTypes.STRING
