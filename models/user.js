@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const bcrypt = require('bcryptjs')
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -18,11 +19,54 @@ module.exports = (sequelize, DataTypes) => {
    
   }
   User.init({
-    DepartmentId: DataTypes.INTEGER,
-    password: DataTypes.STRING,
-    email: DataTypes.STRING,
-    role: DataTypes.STRING
+    DepartmentId: {
+      type: DataTypes.INTEGER,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Department cannot be Empty"
+        },notEmpty:{
+          msg: "Department cannot be empty"
+        }
+      }},
+    password: { type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Password cannot be Empty"
+        },notEmpty:{
+          msg: "Password cannot be empty"
+        }
+      }},
+    email: { type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Email cannot be Empty"
+        },notEmpty:{
+          msg: "Email cannot be empty"
+        },isEmail: {
+          msg:"Must be email Valid"
+        }
+      }},
+    role: { type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Role cannot be Empty"
+        },notEmpty:{
+          msg: "Role cannot be empty"
+        }
+      }},
   }, {
+    hooks:{
+        beforeCreate(instance, options){
+          let salt = bcrypt.genSaltSync(8);
+          let hash = bcrypt.hashSync(instance.password, salt);
+
+          instance.password = hash //! proses hashing password
+        }
+    },
     sequelize,
     modelName: 'User',
   });

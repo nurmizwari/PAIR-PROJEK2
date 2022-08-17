@@ -15,28 +15,25 @@
 </head>
 
 <body>
-  <%- include('partials/navbar.ejs') %>
-
-
-    <div class="container">
+  
+  
+  <div class="container">
+      <%- include('partials/navbar.ejs') %>
+      <%- include('partials/errors',{errors})  %>
       <h1>Login Kuy</h1>
-      <p style="color: red;">
-        <% if(error){ %>
-          <%= error %>
-            <% } %>
-      </p>
-      <form action="/login" method="post">
+     
+      <form  action="/login" method="post">
 
 
-        <div class="mb-3 sm-3">
-          <label for="userName" class="form-label">User Name</label>
-          <input type="text" class="form-control" name="userName">
+        <div class="mb-3 col-sm-3">
+          <label for="userName" class="form-label">Email</label>
+          <input type="text" class="form-control" name="email">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-sm-3">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" name="password">
         </div>
-
+       
 
 
         <button type="submit" class="btn btn-primary">Submit</button>

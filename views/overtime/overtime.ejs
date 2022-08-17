@@ -20,7 +20,7 @@
     <div class="container">
        
         <%- include('../partials/navbar')  %> 
-        <%= JSON.stringify(result)  %> 
+      
 
         
 
@@ -45,7 +45,14 @@
                   <% result.Overtimes.forEach((ele)=>{ %>
                       <td><%= ele.date  %> </td>
                       <td><%= ele.description  %> </td> 
-                      <td><a href='/overtime/<%=ele.id  %>/view/edit'><button type="button" class="btn btn-primary">Edit</button></a> <a href='/overtime/<%=ele.id  %>/view/delete'><button type="button" class="btn btn-primary">Delete</button></a></td>               
+                      <% if (role === 'Admin') { %>
+                       
+                        <td><a href='/overtime/<%=ele.id  %>/view/edit'><button type="button" class="btn btn-primary">Edit</button></a> 
+                          <a href='/overtime/<%=ele.id  %>/view/delete'><button type="button" class="btn btn-primary">Delete</button></a></td>               
+                      <% } else { %>
+                        <td> - </td>
+                   
+                   <%     }%>
               </tr>
             <%      }) %> 
             

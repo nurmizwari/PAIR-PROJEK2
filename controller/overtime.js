@@ -23,7 +23,7 @@ class OvertimeController{
         .then((result) => {
             // console.log(result);
             // res.send(result)
-            res.redirect(`/`)
+            res.redirect(`/home`)
         }).catch((err) => {
             res.send(err)
         });
@@ -35,11 +35,12 @@ class OvertimeController{
         // !LIST TOTAL LEMBURAN
 
         // console.log(req.params);{ ProfileId: '1' }
+        let role = req.session.role
         let id = req.params.ProfileId
         User.findByPk(id,{include:"Overtimes"})
         .then((result) => {
             // console.log(result);
-            res.render('./overtime/overtime',{result,formatCreatedDate})
+            res.render('./overtime/overtime',{result,formatCreatedDate,role})
             // res.send(result)
         }).catch((err) => {
             console.log(err);

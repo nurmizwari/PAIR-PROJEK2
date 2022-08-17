@@ -36,10 +36,42 @@ module.exports = (sequelize, DataTypes) => {
    
   }
   Profile.init({
-    name: DataTypes.STRING,
-    gender: DataTypes.STRING,
-    dateOfBirth: DataTypes.DATE,
-    status: DataTypes.STRING,
+    name: { type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Name cannot be empty"
+        },notEmpty:{
+          msg: "Name cannot be empty"
+        }
+      }},
+    gender: { type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Gender cannot be empty"
+        },notEmpty:{
+          msg: "Gender cannot be empty"
+        }
+      }},
+    dateOfBirth: { type: DataTypes.DATE,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Date cannot be empty"
+        },notEmpty:{
+          msg: "Date cannot be empty"
+        }
+      }},
+    status: { type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Status cannot be empty"
+        },notEmpty:{
+          msg: "Status cannot be empty"
+        }
+      }},
     UserId: DataTypes.INTEGER
   }, {
     sequelize,

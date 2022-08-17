@@ -20,7 +20,7 @@
     <div class="container">
         <%- include('../partials/navbar')  %> 
 
-        <%= JSON.stringify(result)  %> 
+      
         <table class="table table-striped mt-3">
             <thead class="table-dark">
               <tr>
@@ -41,7 +41,12 @@
                 <td><%= el.Profile.formatCreatedDate %></td>
                 <td><%= el.Profile.status %></td>
                 <td> <%= el.Department.divisi  %> </td>
-                <td> <a href='/employee/<%=el.Profile.id %>/delete'><button type="button" class="btn btn-primary">Delete Employee</button></a></td>
+                <% if (role === 'Admin') { %>
+                  <td> <a href='/employee/<%=el.Profile.id %>/delete'><button type="button" class="btn btn-primary">Delete Employee</button></a></td>
+                 
+                <% } else { %>
+                    <td>-</td>
+               <% }%>
                 
                 
                 

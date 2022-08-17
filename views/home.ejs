@@ -20,7 +20,19 @@
     <div class="container">
         <%- include('./partials/navbar')  %> 
 
-        <!-- <%= JSON.stringify(result)  %>  -->
+        <form class="mt-3" action="" method="get">
+          <div class="row">
+            <div class="col-md-11">
+              <input class="form-control" type="search" name="search" id="">
+            </div>
+            <div class="col-md-1">
+              <button type="submit" class="btn btn-primary" value="search">search</button>
+            </div>
+        </div>
+
+        </form>
+
+       
         <table class="table table-striped mt-3">
             <thead class="table-dark">
               <tr>
@@ -28,6 +40,7 @@
                 <th>Gender</th>
                 <th>Date Of Birth</th>
                 <th>Status</th>
+                <th>PIC</th>
                 <th>Department</th>
                 <th style="display: flex; justify-content:space-around;" > Action</th>
               </tr>
@@ -40,21 +53,23 @@
                 <td><%= el.Profile.gender %></td>
                 <td><%= el.Profile.formatCreatedDate %></td>
                 <td><%= el.Profile.status %></td>
+                <td><%= el.role %></td>
                 <td><%= el.Department.divisi%></td>
                 
                 <td style="text-align: right;" class="col">
-                  <a href='/overtime/<%= el.Profile.id  %>/add'>
-                    <button type="button" class="btn btn-primary">Add Overtime</button>
-                  </a>
-                  <a href='/overtime/<%= el.Profile.id  %>/edit'>
-                    <button type="button" class="btn btn-primary">Edit Overtime</button>
-                  </a>
+
+                  <% if (role==='Admin') { %>
+                    <a href='/overtime/<%= el.Profile.id  %>/add'>
+                      <button type="button" class="btn btn-primary">Add Overtime</button>
+                    </a>
+                    
+                    <a href='/employee/<%= el.Profile.id  %>/edit'>
+                      <button type="button" class="btn btn-primary">Edit Employee</button>
+                    </a>  
+                  <% } %>
                   <a href='/overtime/<%= el.Profile.id  %>/view'>
                     <button type="button" class="btn btn-primary">View Overtime</button>
                   </a>
-                  <a href='/employee/<%= el.Profile.id  %>/edit'>
-                    <button type="button" class="btn btn-primary">Edit Employee</button>
-                  </a>  
                 </td>
               
                 <% }) %>

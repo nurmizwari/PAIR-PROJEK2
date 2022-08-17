@@ -5,10 +5,31 @@ const UserController  = require('../controller/user')
 const router = require('express').Router()
 
 
+router.get('/',ProfileController.landingPage)
+
 router.get('/register',UserController.getRegister)
 router.post('/register',UserController.posRegister)
 
-router.get('/',ProfileController.home)
+
+router.get('/login',UserController.getlogin)
+router.post('/login',UserController.poslogin)
+
+//! PENERAPAN MIDDLEWARE
+router.use((req, res, next) => {
+    // console.log(req.session)
+    // next()
+    if (!req.session.emailId) {
+        const errors = 'Please Login First ! '
+        res.redirect(`/login?errors=${errors}`)
+    }else{
+        next() //! kalau ada session terserah mau kemana bebasss
+    }
+})
+//! KEBAWAHNYA AUTO KE APPLY MIDDLEWARE INI
+
+router.get('/home',ProfileController.home)
+
+
 // router.get('/profile/add',ProfileController.addProfile)
 // router.post('/profile/add',ProfileController.saveProfile)
 
@@ -27,6 +48,7 @@ router.get('/overtime/:UserId/view/delete',OvertimeController.delete)
 // router.post('/overtime/:ProfileId/edit',OvertimeController.edit)
 router.get('/employee',ProfileController.profile)
 router.get('/employee/:ProfileId/delete',ProfileController.delete)
+router.get('/logout',UserController.logout)
 
 
 
