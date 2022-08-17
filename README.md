@@ -13,11 +13,13 @@
 # BUG DAN ERROR
 
 - masih ada bug di date di bagian edit profile  (BELUM SOLVED)
-- masih ada bug di bagian delete overtime (berhasil ke hapus   tapi eror dulu) (BELUM SOLVED)
+- masih ada bug di bagian delete overtime (berhasil ke hapus   tapi eror dulu) (SOLVED)
 - kalau delete profile itu berhasil terhapus tapi error dulu  karena ada relasi ke usernya dan user tidak terhapus  (SOLVED)
-- search masih belum jalan 
+- search masih belum jalan (SUDAH) 
 -validasi register sudah (SOLVED)
-- belum login 
-- belum dikasih session dan middleware
-- nodemailer belum
-- instance method belum
+- belum login (SUDAH)
+- belum dikasih session dan middleware (SUDAH)
+- nodemailer belum (SUDAH)
+- instance method belum (SUDAH)
+
+

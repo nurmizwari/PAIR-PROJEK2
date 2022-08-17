@@ -2,7 +2,7 @@ const { Department,User,Profile,Overtime } = require("../models");
 
 class DepartmentController{
    static department(req,res){
-        Department.department({where:{divisi:{limit:1}}})
+        Department.department()
         .then((result) => {
             // res.send(result)
             res.render('department/department',{result})

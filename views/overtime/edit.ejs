@@ -21,13 +21,17 @@
   
     <div style="font-weight:bold ;" class="container">
         <%- include('../partials/navbar')  %>
-
         
-
+        
+        
         <h3 style="text-align: left;">Edit  Overtime </h3>
+        <%- include('../partials/errors',{errors})  %>
 
     <div>
-    <form  action='/overtime/<%= result.id  %>/view/edit' method="post">
+      
+        <%= JSON.stringify(result)  %> 
+      
+    <form  action='/overtime/<%= result.id %>/view/edit' method="post">
         <div class="mb-3 col-sm-8">
           <label for="" class="form-label" name="date"
             >Date</label
@@ -37,6 +41,7 @@
             class="form-control"
             name="date"
             placeholder=""
+            value="<%= result.date  %> "
           />
         </div>
         <div class="mb-3 col-sm-8">
@@ -58,6 +63,7 @@
       </form>
     </div>
     </div>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 

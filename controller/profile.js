@@ -12,11 +12,30 @@ class ProfileController{
         // console.log({search});
 
         let options = {include:[Profile, Department, Overtime]}
-
+        console.log(search,'masuk search');
         if (search) {
-            options = {include:[Profile, Department, Overtime]},{ where:{email:{[Op.iLike]:`%${search}%`}}}
+            console.log(search,'dalem if');
+            // options = {
+            //     include:[Profile, Department, Overtime],
+            //     where:{name:{[Op.iLike]:`%${search}%`}}
+            // }
+            options = {
+                include: [
+                  { 
+                    model: Profile,
+                    where: {
+                      name: {
+                        [Op.iLike]:`%${search}%`
+                      }
+                    }
+                  },
+                  { model: Department },
+                  { model: Overtime }
+                ]
+              }
+            
         }
-
+        console.log(options);
         //! INI HALAMAN HOME DATA
         User.findAll(options)
         .then((result) => {

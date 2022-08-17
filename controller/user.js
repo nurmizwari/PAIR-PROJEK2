@@ -55,7 +55,7 @@ class UserController{
         // 2.a kalu user gak ada gak boleh masuk ke home , keluar error
         // 3 kalo gak sama passwordnya gak boleh masuk ke home , keluar error
         // 4 kalo pw sesuai maaka redirect ke home
-        console.log(req.body);
+        // console.log(req.body);
         let {email, password} = req.body
         User.findOne({where:{email}})
         .then((email) => {

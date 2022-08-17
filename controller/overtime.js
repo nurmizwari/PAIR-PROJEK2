@@ -49,39 +49,51 @@ class OvertimeController{
     }
 
     static edit(req, res){
-        // console.log(req.params);
-        let id = req.params.UserId
+        let errors = req.query.err
+        console.log(req.params,'getEdit');
+        let id = req.params.Overtime
+        console.log(id);
         Overtime.findByPk(id)
         .then((result) => {
             // res.send(result)
-            res.render('./overtime/edit',{result})
-        }).catch((err) => {
-            
-        });
-    }
-
-    static saveEdit(req, res){
-
-        // console.log(req.params);
-        let id = req.params.UserId
-        // console.log(req.body);
-        let {date,description} = req.body
-
-        Overtime.update({date,description},{where:{id}})
-        .then(_ => {
-            res.redirect(`/overtime/${id}/view`)
+            res.render('./overtime/edit',{result,errors})
         }).catch((err) => {
             res.send(err)
         });
     }
 
+    static saveEdit(req, res){
+
+        console.log(req.params);
+        let id = req.params.Overtime
+        // console.log(id);
+        let {date,description} = req.body
+
+        Overtime.update({date,description},{where:{id}})
+        .then(result => {
+            // console.log(result);
+            res.redirect(`/overtime/${id}/view/edit`)
+        }).catch((err) => {
+
+            if (err.name === 'SequelizeValidationError') {
+                err = err.errors.map((e=>e.message))
+                res.redirect(`/overtime/${id}/view/edit?err=${err}`)
+            }else{
+
+                console.log(err);
+                res.send(err)
+            }
+        });
+    }
+
     static delete(req, res){
         console.log(req.params);
-        let id = req.params.UserId
+        let id = req.params.Overtime
         Overtime.destroy({where:{id}})
         .then((result) => {
-            res.redirect(`/overtime/${id}/view`)
+            res.redirect(`/home`)
         }).catch((err) => {
+            console.log(err);
             res.send(err)
         });
     }

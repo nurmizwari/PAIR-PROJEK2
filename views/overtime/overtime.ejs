@@ -23,7 +23,7 @@
       
 
         
-
+      <%= JSON.stringify(result)  %> 
       <% if (result.Overtimes.length === null || result.Overtimes.length === 0) { %>
        <p style="font-weight:bold ;">No Overtimes</p>
       <% } else { %>
@@ -48,7 +48,7 @@
                       <% if (role === 'Admin') { %>
                        
                         <td><a href='/overtime/<%=ele.id  %>/view/edit'><button type="button" class="btn btn-primary">Edit</button></a> 
-                          <a href='/overtime/<%=ele.id  %>/view/delete'><button type="button" class="btn btn-primary">Delete</button></a></td>               
+                          <a href='/overtime/<%=ele.id  %>/view/Delete'><button type="button" class="btn btn-primary">Delete</button></a></td>               
                       <% } else { %>
                         <td> - </td>
                    

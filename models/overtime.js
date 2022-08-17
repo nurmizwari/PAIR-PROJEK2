@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Overtime.belongsTo(models.User)
     }
+
+    
+
     // get formatDate(){      
     //   const options = {
     //     weekday: "long",
@@ -30,9 +33,25 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Overtime.init({
-    date: DataTypes.DATE,
+    date: { type: DataTypes.DATE,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Date cannot be empty"
+        },notEmpty:{
+          msg: "Date cannot be empty"
+        }
+      }},
     UserId: DataTypes.INTEGER,
-    description: DataTypes.STRING
+    description:{ type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        notNull:{
+          msg:"Date cannot be empty"
+        },notEmpty:{
+          msg: "Date cannot be empty"
+        }
+      }},
   }, {
     sequelize,
     modelName: 'Overtime',
