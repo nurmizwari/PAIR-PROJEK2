@@ -1,5 +1,5 @@
 const { Department,User,Profile,Overtime } = require("../models");
-const formatCreatedDate = require('../helper/formatDate')
+
 
 class OvertimeController{
     static addOvertimeGet(req, res){
@@ -40,10 +40,10 @@ class OvertimeController{
         User.findByPk(id,{include:"Overtimes"})
         .then((result) => {
             // console.log(result);
-            res.render('./overtime/overtime',{result,formatCreatedDate,role})
+            res.render('./overtime/overtime',{result,role})
             // res.send(result)
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.send(err)
         });
     }
@@ -52,7 +52,7 @@ class OvertimeController{
         let errors = req.query.err
         console.log(req.params,'getEdit');
         let id = req.params.Overtime
-        console.log(id);
+        // console.log(id);
         Overtime.findByPk(id)
         .then((result) => {
             // res.send(result)
@@ -64,7 +64,7 @@ class OvertimeController{
 
     static saveEdit(req, res){
 
-        console.log(req.params);
+        // console.log(req.params);
         let id = req.params.Overtime
         // console.log(id);
         let {date,description} = req.body
@@ -80,20 +80,20 @@ class OvertimeController{
                 res.redirect(`/overtime/${id}/view/edit?err=${err}`)
             }else{
 
-                console.log(err);
+                // console.log(err);
                 res.send(err)
             }
         });
     }
 
     static delete(req, res){
-        console.log(req.params);
+        // console.log(req.params);
         let id = req.params.Overtime
         Overtime.destroy({where:{id}})
         .then((result) => {
             res.redirect(`/home`)
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.send(err)
         });
     }

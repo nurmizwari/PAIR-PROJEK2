@@ -35,7 +35,7 @@ class ProfileController{
               }
             
         }
-        console.log(options);
+        // console.log(options);
         //! INI HALAMAN HOME DATA
         User.findAll(options)
         .then((result) => {
@@ -98,7 +98,7 @@ class ProfileController{
 
     static delete(req,res){
 
-        console.log(req.params);
+        // console.log(req.params);
         let id = req.params.ProfileId
 
         Profile.destroy({where:{id}})

@@ -13,18 +13,30 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Overtime.belongsTo(models.User)
     }
+    
+    formatCreatedDate(){
+      const created = this.date;
+      const year = created.getFullYear();
+      let month = created.getMonth() + 1;
+      let dated = created.getDate();
+  
+      if(month < 10) {
+          month = `0${month}`;
+      }
+  
+      if(dated < 10) {
+          dated = `0${dated}`;
+      }
+      // console.log(`${date}-${month}-${year}`);
+      return `${year}-${month}-${dated}`;
+      
+      // return this.dateOfBirth.toISOString().split("T")[0];
+      }
+
 
     
 
-    // get formatDate(){      
-    //   const options = {
-    //     weekday: "long",
-    //     year: "numeric",
-    //     month: "long",
-    //     day: "numeric",
-    //   };
-    //   return this.date.toLocaleDateString("id-ID", options);
-    //   }
+  
     get formatDate(){
       var date = this.date
       mnth = ("0" + (date.getMonth() + 1)).slice(-2),

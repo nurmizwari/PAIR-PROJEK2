@@ -77,7 +77,7 @@ class UserController{
                 res.redirect(`/login?errors=${errors}`)
             }
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.send(err)
         });
     }
