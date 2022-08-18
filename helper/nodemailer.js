@@ -17,7 +17,7 @@ function nodeMail(email,) {
         from: "hai.warungku@gmail.com",
         to: email,
         subject: 'Confirmation Email Success',
-        text: "Welcome to the club!"
+        text: "Welcome Utamakan keselamatan dan kesehatan kerja!"
     }
 
     //step3
