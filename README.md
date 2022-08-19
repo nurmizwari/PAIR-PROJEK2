@@ -1,7 +1,7 @@
 # PAIR-PROJEK2
 # APLICATION
 - Aplikasi untuk input lembur suatu perusahaan
-- menggunakan express,postgres,sequelize,ejs,nodemon,heroku(deploy)
+- menggunakan express,postgres,sequelize,ejs,nodemon,nodemailer,heroku(deploy)
 
 -FITUR BARU ADD OVERTIME DAN VIEW OVERTIME BERDASARKAN ID NYA done
 - form add employee done
