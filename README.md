@@ -23,3 +23,8 @@
 - instance method belum (SUDAH)
 
 
+# NOTE
+- handle juga middleware dan session untuk employee biar tidak bisa masuk lewat url 
+- jangan cuma di handle lewat ejs nya
+
+

@@ -3,11 +3,12 @@ const { Department,User,Profile,Overtime } = require("../models");
 
 class OvertimeController{
     static addOvertimeGet(req, res){
+        let errors = req.query.err
         // console.log(req.params);
         let id = req.params.ProfileId
         Profile.findByPk(id)
         .then((result) => {
-            res.render('./overtime/add',{result})  
+            res.render('./overtime/add',{result,errors})  
         }).catch((err) => {
             res.send(err)
         });
@@ -25,7 +26,14 @@ class OvertimeController{
             // res.send(result)
             res.redirect(`/home`)
         }).catch((err) => {
-            res.send(err)
+            if (err.name === 'SequelizeValidationError') {
+                err = err.errors.map((e=>e.message))
+                res.redirect(`/overtime/${id}/add?err=${err}`)
+            }else{
+
+                // console.log(err);
+                res.send(err)
+            }
         });
     }
 

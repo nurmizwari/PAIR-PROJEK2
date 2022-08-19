@@ -20,16 +20,18 @@
   <div class="container">
       <%- include('partials/navbar.ejs') %>
       <%- include('partials/errors',{errors})  %>
-      <h1>Login Kuy</h1>
+      <div style="margin-top: 20px; font-weight:bolder; text-align: center;" class="mb-3 col-sm-8 alert alert-primary" role="alert">
+        Login 
+      </div>
      
-      <form  action="/login" method="post">
+      <form style="font-weight:bold ; align-items: center;" action="/login" method="post">
 
 
-        <div class="mb-3 col-sm-3">
+        <div class="mb-3 col-sm-8">
           <label for="userName" class="form-label">Email</label>
           <input type="text" class="form-control" name="email">
         </div>
-        <div class="mb-3 col-sm-3">
+        <div class="mb-3 col-sm-8">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" name="password">
         </div>

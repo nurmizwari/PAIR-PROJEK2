@@ -19,7 +19,7 @@ router.post('/login',UserController.poslogin)
 router.use((req, res, next) => {
     // console.log(req.session)
     // next()
-    if (!req.session.emailId) {
+    if (!req.session.emailId ) {
         const errors = 'Please Login First ! '
         res.redirect(`/login?errors=${errors}`)
     }else{
@@ -27,6 +27,19 @@ router.use((req, res, next) => {
     }
 })
 //! KEBAWAHNYA AUTO KE APPLY MIDDLEWARE INI
+
+
+// router.use((req, res, next) => {
+//     // console.log(req.session)
+//     // next()
+//     if (!req.session.role && req.session.role === 'Admin') {
+//         const errors = 'Please Login First ! '
+//         res.redirect(`/login?errors=${errors}`)
+//     }else{
+//         next() //! kalau ada session terserah mau kemana bebasss
+//     }
+// })
+
 
 router.get('/home',ProfileController.home)
 

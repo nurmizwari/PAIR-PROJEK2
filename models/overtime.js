@@ -59,9 +59,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       validate: {
         notNull:{
-          msg:"Date cannot be empty"
+          msg:"Description cannot be empty"
         },notEmpty:{
-          msg: "Date cannot be empty"
+          msg: "Description cannot be empty"
         }
       }},
   }, {

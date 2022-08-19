@@ -23,8 +23,11 @@
         <%- include('../partials/navbar')  %>
 
         
+        <div style="margin-top: 20px; font-weight:bolder; text-align: center;" class="mb-3 col-sm-8 alert alert-primary" role="alert">
+          Add  Overtime
+        </div>
 
-        <h3 style="text-align: left;">Add  Overtime </h3>
+        <%- include('../partials/errors',{errors})  %> 
 
     <div>
     <form  action='/overtime/<%= result.id  %>/add' method="post">
