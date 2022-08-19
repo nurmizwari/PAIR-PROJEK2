@@ -1,4 +1,7 @@
 # PAIR-PROJEK2
+# APLICATION
+- Aplikasi untuk input lembur suatu perusahaan
+- menggunakan express,postgres,sequelize,ejs,nodemon,heroku(deploy)
 
 -FITUR BARU ADD OVERTIME DAN VIEW OVERTIME BERDASARKAN ID NYA done
 - form add employee done
@@ -24,7 +27,11 @@
 
 
 # NOTE
-- handle juga middleware dan session untuk employee biar tidak bisa masuk lewat url 
-- jangan cuma di handle lewat ejs nya
+- handle juga middleware dan session untuk employee biar tidak bisa masuk lewat url (SOLVED)
+- jangan cuma di handle lewat ejs nya (SOLVED)
+# LINK DEPLOY
+- https://lembur-app.herokuapp.com/
+
+
 
 
