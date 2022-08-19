@@ -3,6 +3,7 @@ const { Department,User,Profile,Overtime } = require("../models");
 
 class OvertimeController{
     static addOvertimeGet(req, res){
+       
         let errors = req.query.err
         // console.log(req.params);
         let id = req.params.ProfileId
@@ -24,7 +25,9 @@ class OvertimeController{
         .then((result) => {
             // console.log(result);
             // res.send(result)
-            res.redirect(`/home`)
+            console.log(result);
+            let notification = `Succes add Overtime`
+            res.redirect(`/home?notification=${notification}`)
         }).catch((err) => {
             if (err.name === 'SequelizeValidationError') {
                 err = err.errors.map((e=>e.message))
@@ -57,6 +60,7 @@ class OvertimeController{
     }
 
     static edit(req, res){
+        let succesEdit = req.query.succesEdit
         let errors = req.query.err
         console.log(req.params,'getEdit');
         let id = req.params.Overtime
@@ -64,7 +68,7 @@ class OvertimeController{
         Overtime.findByPk(id)
         .then((result) => {
             // res.send(result)
-            res.render('./overtime/edit',{result,errors})
+            res.render('./overtime/edit',{result,errors,succesEdit})
         }).catch((err) => {
             res.send(err)
         });
@@ -80,7 +84,9 @@ class OvertimeController{
         Overtime.update({date,description},{where:{id}})
         .then(result => {
             // console.log(result);
-            res.redirect(`/overtime/${id}/view/edit`)
+
+            let succesEdit = `Succes Edited`
+            res.redirect(`/overtime/${id}/view/edit?succesEdit=${succesEdit}`)
         }).catch((err) => {
 
             if (err.name === 'SequelizeValidationError') {

@@ -39,9 +39,11 @@ class ProfileController{
         //! INI HALAMAN HOME DATA
         User.findAll(options)
         .then((result) => {
+            let editProfile = req.query.editProfile
+            let notification = req.query.notification
             // console.log(result);
             // res.send('masuk')
-          res.render('home',{result,role})
+          res.render('home',{result,role,notification,editProfile})
         // res.send(result)
         }).catch((err) => {
             // console.log(err);
@@ -54,6 +56,7 @@ class ProfileController{
 
     static getEdit(req,res){
         // console.log(req.params);
+        let editProfile = req.query.editProfile
         let errors = req.query.err
         let id = req.params.ProfileId
         Profile.findByPk(id)
@@ -72,7 +75,8 @@ class ProfileController{
         let {name,gender,dateOfBirth,status} = req.body
         Profile.update({name,gender,dateOfBirth,status},{where:{id}})
         .then(_ => {
-            res.redirect('/home')
+            let editProfile = `Succes Edited Employee`
+            res.redirect(`/home?editProfile=${editProfile}`)
         }).catch((err) => {
             if (err.name === 'SequelizeValidationError') {
                 err = err.errors.map((e=>e.message))
